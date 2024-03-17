@@ -1,0 +1,48 @@
+{% extends "app/layout.html" %}
+{% block content %}
+<br>
+<h2> {{post_1.title}} </h2>
+
+{# Вывод картинки записи блога перед содержанием статьи#}
+{% if post_1.image and post_1.image.url != '/media/temp.jpg' %}
+    <br>
+    <img class="blogpost" src="{{ post_1.image.url }}" alt=" Картинка статьи блога" width="500"/>
+    <br>
+{% endif %}
+
+<br>
+{# Отключение HTML-экранирования при выводе полного содержания поста (т.е. включение поддержки тегов HTML) #}
+{% autoescape off %}
+    <div class="blog-content">
+        <p> {{post_1.content|linebreaksbr}} </p>      {# вывод текста по абзацам#}
+    </div>
+{% endautoescape %}
+
+<hr/>
+
+{# Форма ввода комментария на веб-страницу #}
+{% if user.is_authenticated %}
+    <h3>Добавить комментарий</h3>
+    <form method="POST" >{% csrf_token %} {# защита от атак CSRF#}
+    <div>
+        {# Настройка вида формы. Отображение полей формы в абзацах #}
+        {{form.as_p}}
+        <button type="submit" class="save btn btn-default" > Отправить комментарий </button>
+    </div>
+    </form>
+    <br>
+{% else %}
+    <h3> Для добавления своего комментария, пожалуйста, <a href="{% url 'login' %}">авторизуйтесь</a> </h3>
+{% endif %}
+
+{# Код вывода всех комментариев к статье блога #}
+{% for comment in comments %}
+    <div class="jumbotron">
+        <h7 class="comment-date"> {{comment.date}} </h7>
+        <h5 class="comment-author"> {{comment.author}} </h5>
+        <p class="comment-text"> {{comment.text|linebreaksbr}} </p>  {# вывод комментария по абзацам#}
+     </div>
+{% endfor %}
+
+<p><a href="{% url 'blog' %}"> Назад </a> </p>
+{% endblock %}

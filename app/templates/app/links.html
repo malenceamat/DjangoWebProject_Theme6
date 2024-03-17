@@ -1,0 +1,23 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+{# Загрузка статических файлов: #}
+{% load staticfiles %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+<div class="whitebackground">
+    <br>
+    <a href ="https://www.issf-sports.org/" target="_blank"> <img src="{% static 'app/content/logo_ISSF.svg' %}" alt="Международная федерация спортивной стрельбы" height="70"/></a>
+    <br><br>
+    <a href ="http://shooting-russia.ru/" target="_blank"> <img src="{% static 'app/content/logo_shooting-russia.jpg' %}" alt="Стрелковый союз России" height="55"/></a>
+    <br><br>
+    <a href ="https://fvsr-russia.ru/" target="_blank"> <img src="{% static 'app/content/logo_fvsr.png' %}" alt="Федерация Высокоточной Стрельбы России" height="65"/></a>
+    <br><br>
+    <a href ="https://www.scatt.ru/" target="_blank"> <img src="{% static 'app/content/logo_SCATT.png' %}" alt="Профессиональные стрелковые тренажеры SCATT" height="45"/></a>
+    <br><br>
+    <a href ="https://forum.guns.ru/" target="_blank"> <img src="{% static 'app/content/logo_guns_ru.jpg' %}" alt="Оружейный портал Guns.ru" height="60"/></a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends "app/layout.html" %}
+{% block content %}
+
+<!-- 
+    Шаблон страницы, отображающий либо форму, либо другие данные, переданные из метода действия.
+    Разметка формы обратной связи пользователя сайта построена таким образом, чтобы отображать форму 
+    в том случае, когда в шаблон передаётся переменная формы form, не равная None (пустому значению). 
+-->
+<!-- Проверка наличия данных формы в переданном в шаблон словаре:-->
+{% if form != None %}
+    <style>    
+        ul {list-style: none;}
+        /* Для того, чтобы убрать маркеры из маркированного списка Radiobutton*/
+    </style>
+    <br><h2>Оставьте ваш отзыв!</h2><br>
+    <div>
+    <!--
+        В данном случае в шаблоне страниц Django использованы обычные HTML-формы вместо собственных 
+        классов форм, представляющих модель формы. 
+        Т.е. включения форм в шаблон произведено не через переменную класса, как в других случаях.
+    -->
+    <form method="POST" >{% csrf_token %} {# защита от атак CSRF#}
+	<label for ="{{ form.name.id_for_label }}">{{ form.name.label }}:</label>
+        {{ form.name }}<br><br>
+	<label for ="{{ form.city.id_for_label }}">{{ form.city.label }}:</label>
+        {{ form.city }}<br>
+	<label for ="{{ form.gender.id_for_label }}">{{ form.gender.label }}:</label>
+        {{ form.gender }}
+	<label for ="{{ form.job.id_for_label }}">{{ form.job.label }}:</label><br>
+        {{ form.job }}<br><br>
+	<label for ="{{ form.design.id_for_label }}">{{ form.design.label }}:</label><br>
+        {{ form.design }}<br><br>
+	<label for ="{{ form.content.id_for_label }}">{{ form.content.label }}:</label><br>
+        {{ form.content }}<br><br>
+	<label for ="{{ form.notice.id_for_label }}">{{ form.notice.label }}:</label>
+        {{ form.notice }}<br><br>
+     <label for ="{{ form.contact.id_for_label }}">{{ form.contact.label }}:</label>
+        {{ form.contact}}<br><br>
+	<label for ="{{ form.email.id_for_label }}">{{ form.email.label }}:</label>
+        {{ form.email }}<br><br>
+	<label for ="{{ form.message.id_for_label }}">{{ form.message.label }}:</label><br>
+        {{ form.message }}<br><br>
+        <button type="submit" class="save btn btn-default" id="id_button"> Отправить </button>
+    </form>
+    </div>
+    <script>
+        // Динамический эффект изменения цвета надписи на кнопке отправки формы на сервер при наведении на нее курсора мыши:
+        // цвет по умолчанию
+        const default_btn_color = $('#id_button').css('color');
+        function btn_active()
+        {
+            $('#id_button').css('color', 'blue');
+        }
+        function btn_inactive()
+        {
+            $('#id_button').css('color', default_btn_color);
+        }
+        // событие входа курсора мыши в область кнопки
+        $('#id_button').mouseover(btn_active);
+        // событие выхода курсора мыши из области кнопки
+        $('#id_button').mouseout(btn_inactive);
+
+
+        // Динамический эффект изменения цвета фона полей ввода при их выборе для ввода:
+        // цвет по умолчанию
+        const default_field_bgcolor = $('#id_name').css('background-color');
+
+        // Поле ввода имени:
+        // событие выбора элемента для ввода
+        $('#id_name').focus(field_name_active);
+        // событие снятия выбора с элемента
+        $('#id_name').blur(field_name_inactive);
+        function field_name_active()
+        {
+            $('#id_name').css('background-color', 'lightgray');
+        }
+        function field_name_inactive()
+        {
+            $('#id_name').css('background-color', default_field_bgcolor);
+        }
+
+        // Поле ввода города:
+        // событие выбора элемента для ввода
+        $('#id_city').focus(field_city_active);
+        // событие снятия выбора с элемента
+        $('#id_city').blur(field_city_inactive);
+        function field_city_active()
+        {
+            $('#id_city').css('background-color', 'lightgray');
+        }
+        function field_city_inactive()
+        {
+            $('#id_city').css('background-color', default_field_bgcolor);
+        }
+
+        // Поле ввода специальности:
+        // событие выбора элемента для ввода
+        $('#id_job').focus(field_job_active);
+        // событие снятия выбора с элемента
+        $('#id_job').blur(field_job_inactive);
+        function field_job_active()
+        {
+            $('#id_job').css('background-color', 'lightgray');
+        }
+        function field_job_inactive()
+        {
+            $('#id_job').css('background-color', default_field_bgcolor);
+        }
+
+        // Поле ввода адреса e-mail:
+        // событие выбора элемента для ввода
+        $('#id_email').focus(field_email_active);
+        // событие снятия выбора с элемента
+        $('#id_email').blur(field_email_inactive);
+        function field_email_active()
+        {
+            $('#id_email').css('background-color', 'lightgray');
+        }
+        function field_email_inactive()
+        {
+            $('#id_email').css('background-color', default_field_bgcolor);
+        }
+
+        // Многострочное поле ввода отзыва:
+        // событие выбора элемента для ввода
+        $('#id_message').focus(field_message_active);
+        // событие снятия выбора с элемента
+        $('#id_message').blur(field_message_inactive);
+        function field_message_active()
+        {
+            $('#id_message').css('background-color', 'lightgray');
+        }
+        function field_message_inactive()
+        {
+            $('#id_message').css('background-color', default_field_bgcolor);
+        }
+    </script>
+<!-- 
+    Вёрстка данных, передаваемых в отсутствие данных формы.
+    В этом случае подразумевается, что переменная data (ключ словаря), переданная в шаблон страницы 
+    из метода действия, содержит поля для отображения результатов отправки формы, и выполняется 
+    отображение этих данных. 
+-->
+{% else %}
+    <br><h2>Благодарим за оставленный отзыв!</h2>
+    <h3>Вы сообщили следующее:</h3>
+    <ul class="pool-result">
+        <li><span>Имя:</span> {{ data.name }} </li>
+        <li><span>Город:</span> {{ data.city }} </li>
+        <li><span>Пол:</span> {{ data.gender }} </li>
+        <li><span>Профессия:</span> {{ data.job }} </li>
+        <li><span>Оценка дизайна:</span> {{ data.design }} </li>
+        <li><span>Оценка контента:</span> {{ data.content }} </li>
+        <li><span>Получать новости сайта на e-mail:</span> {{ data.notice }} </li>
+        <li><span>Разрешаю связаться со мной по поводу отзыва:</span> {{ data.contact }} </li>
+        <li><span>Адрес e-mail:</span> {{ data.email }} </li>
+        <li><span>Отзыв:</span> {{ data.message }} </li>
+    </ul>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}</h2>
+<h3>{{ message }}</h3>
+
+<address>
+    <strong>Адрес: </strong>3-я улица Строителей, дом 25.<br />
+    <strong><abbr title="Телефон">Тел.:</abbr></strong>
+    +7-555-5555555
+</address>
+
+<address>
+    <strong>Канал YouTube:</strong> <a href="https://www.youtube.com/channel/UCljqwmcGwCOJ33jwfk3YGLg" target="_blank">ДЕРЗАЙ-ИЗОБРЕТАЙ</a><br />
+    <strong>Thingiverse:</strong> <a href="https://www.thingiverse.com/inventivespark/designs" target="_blank">InventiveSpark</a><br />
+    <strong>E-mail:</strong>   <a href="mailto:Support@example.com">welcome@example.com</a><br />
+</address>
+
+{% endblock %}

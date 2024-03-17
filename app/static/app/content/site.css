@@ -1,0 +1,135 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+h7.comment-date {
+    font-style: italic;
+    color: gray;
+}
+
+
+h4.post-date {
+    font-style: italic;
+    color: gray;
+}
+
+h5.comment-author {
+   font-weight: bold;
+}
+
+p.comment-text {
+   color: #404040;
+}
+
+input,
+textarea 
+{
+    border-radius: 4px;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+textarea:hover {
+    border: 2px solid #7f7f7f;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border: 2px solid #00b770;
+}
+
+label {
+    font-weight: bold;
+}
+
+h2 {
+    color: dimgray;
+}
+
+h3, h4, h5, h6, h7 {
+    font-weight: bold;
+}
+
+body {
+    background: radial-gradient(at center, white, #f9f9f9);
+}
+
+.whitebackground {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 100px 100px rgba(255,255,255,1);
+    -webkit-box-shadow: 0px 0px 100px 100px rgba(255,255,255,1);
+    -moz-box-shadow: 0px 0px 100px 100px rgba(255,255,255,1);
+}
+
+footer, .copyright {
+    color: gray;
+}
+
+.copyright {
+    font-style: italic;
+}
+
+/* Шрифт с засечками применяется для удобства чтения там, где представлен большой объем текста: */
+.lead, .blog-content {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.blog-content {
+    font-size: 16px;
+}
+
+.jumbotron table td:last-child {
+    padding-left: 40px;
+}
+
+.pool-result li, label {
+    color: #3366cc;
+}
+
+.pool-result li span {
+    font-weight: bold;
+    color: black;
+}

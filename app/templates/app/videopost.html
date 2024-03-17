@@ -1,0 +1,17 @@
+﻿{% extends "app/layout.html" %}
+{% block content %}
+
+    <h2>{{ title }}</h2>
+    <div>
+        <h3>Стрелковые тренажеры SCATT</h3>
+        <VIDEO src="/media/1.mp4" controls="controls" width="500" poster="/media/1.jpg">
+    </div>
+    <br><span class="copyright">Фрагмент видео <a href="https://www.youtube.com/watch?v=ywdeM-6WvAI" target="_blank">«SCATT Shooting Training Systems Highlights»</a>.</span>
+    <hr/>
+    <div>
+        <h3>История развития пневматического оружия</h3>
+        <VIDEO src="/media/2.mp4" controls="controls" width="500" poster="/media/2.jpg">
+    </div>
+    <br><span class="copyright">Фрагмент телевизионной программы канала Россия 2 <a href="https://www.youtube.com/watch?v=ZtU853ll1zA" target="_blank">«Технологии спорта: Пулевая стрельба»</a>.</span>
+
+{% endblock %}

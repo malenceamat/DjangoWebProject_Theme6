@@ -1,0 +1,15 @@
+{% extends "app/layout.html" %}
+{% block content %}
+<br>
+<h2>Регистрация пользователя</h2>
+<br>
+    <form method="POST" > {% csrf_token %} {# защита от атак CSRF#}
+        <div>
+            {# Настройка вида формы. Отображение полей формы в абзацах #}
+            {{ regform.as_p}}
+
+            <button type="submit" class="save btn btn-default" > Зарегистрировать </button>
+        </div>
+    </form>
+
+{% endblock %}
